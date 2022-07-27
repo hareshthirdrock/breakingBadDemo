@@ -1,0 +1,93 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Breaking Bad
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="main-page">   
+  
+ <ion-card>
+  <ion-slides pager [options]="slideOpts">
+    <ion-slide *ngFor="let image of imageList">
+    
+      <img [src]="image">
+    </ion-slide>
+  </ion-slides>
+
+  <ion-card-header>
+    <ion-card-title>Breaking Bad</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    Breaking Bad is an American neo-Western crime drama television series created and produced by Vince Gilligan, and the namesake of the Breaking Bad franchise.
+  </ion-card-content>
+ </ion-card>
+ <ion-label class="label">Characters</ion-label>
+<ng-container *ngIf="!isLoading && (list.length || searchValue)">
+ <ion-toolbar class="searchbar">
+  <ion-row class="ion-align-items-center">
+    <ion-col size="10">
+      <ion-searchbar  (ionInput)="search($event)"  ></ion-searchbar>
+    </ion-col>
+    <ion-col class="ion-text-center">
+      <ion-icon name="filter-outline" (click)="presentPopover($event)"></ion-icon>
+      <ion-popover #popover [isOpen]="isOpen" side="left" (didDismiss)= "isOpen = false">
+        <ng-template>
+          <ion-content class="ion-padding">
+            <ion-list>
+                <ion-item [ngClass]="{'selectedNumber':filterValue==null}" (click)="getFilterValue(null)">All</ion-item>
+                <ion-item *ngFor="let item of filterArr;" [ngClass]="{'selectedNumber':filterValue==item}" (click)="getFilterValue(item)">{{item}}</ion-item>
+          </ion-list>
+          </ion-content>
+        </ng-template>
+      </ion-popover>
+    </ion-col>
+  </ion-row>
+
+
+</ion-toolbar>
+
+<ion-card *ngFor="let item of list" (click)="presentModal(item)" >
+  <ion-row class="ion-align-items-center">
+  <ion-col size="3">
+        <ion-avatar>
+          <img [src]="item.img">
+    </ion-avatar>
+  </ion-col >
+  <ion-col class="ion-text-start" size="9">
+    <ion-label class="ion-label">{{item.name}}</ion-label>
+  </ion-col>
+</ion-row>
+</ion-card>
+</ng-container>
+<ng-container *ngIf="!isLoading && !list.length ">
+  <ion-row class="ion-align-items-center">
+    <ion-col size="12" class="noDataAvailable">
+    <ion-label>No Characters available</ion-label>
+  </ion-col>
+  </ion-row>
+</ng-container>
+<!-- <ion-spinner></ion-spinner> -->
+<ng-container *ngIf="isLoading">
+<ion-card *ngFor="let item of [{},{},{},{},{}]" >
+<ion-item>
+  <ion-avatar slot="start">
+    <ion-skeleton-text animated></ion-skeleton-text>
+  </ion-avatar>
+  <ion-label>
+    <h3>
+      <!-- <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text> -->
+    </h3>
+    <p>
+      <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+    </p>
+    <p>
+      <!-- <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text> -->
+    </p>
+  </ion-label>
+</ion-item> 
+</ion-card>
+</ng-container>
+
+</ion-content>

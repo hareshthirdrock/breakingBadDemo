@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+  <!-- <ion-icon name="arrow-back-outline"></ion-icon> -->
+  <ion-buttons slot="start">
+    <ion-back-button defaultHref="home" (click)="backTohome()" ></ion-back-button>
+</ion-buttons>
+
+<ion-title>
+  {{item.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div style="width: 100%; text-align-last: center;">
+  <img [src]="item.img">
+</div>
+  <ion-card class="card_details">
+
+
+    <!-- <ion-card-header>
+      <ion-card-title>{{item.name}}</ion-card-title>
+    </ion-card-header> -->
+    <ion-card-content>
+      <ion-label>Nickname</ion-label>
+      <ion-item>{{item.nickname}}</ion-item>
+      <ion-label>Occupation</ion-label>
+      <ion-item *ngFor="let occ of item.occupation">
+        {{occ}}
+      </ion-item>
+      <ion-label>Season appearance</ion-label>
+      <ion-item>
+        <ion-row *ngFor="let app of item.appearance">
+          <ion-col size="2">
+            {{app}}
+          </ion-col>
+        </ion-row>
+      </ion-item>
+      <ion-label>Status</ion-label>
+      <ion-item>{{item.status}}</ion-item>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

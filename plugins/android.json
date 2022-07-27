@@ -1,0 +1,27 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "breaking.bad.app"
+    },
+    "cordova-plugin-ionic-keyboard": {
+      "PACKAGE_NAME": "breaking.bad.app"
+    },
+    "cordova-plugin-ionic-webview": {
+      "PACKAGE_NAME": "breaking.bad.app"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "breaking.bad.app"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "breaking.bad.app"
+    }
+  },
+  "dependent_plugins": {}
+}
